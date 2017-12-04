@@ -1,4 +1,6 @@
 from address_book import AddressBook
+from address import Address
+from work_address import WorkAddress
 from view import View
 
 
@@ -51,17 +53,22 @@ class Controller:
     @staticmethod
     def add_address(address_book):
         address = View.add_address()
-        address_book.add_address(address)
+        if len(address) == 4:
+            address_book.add_address(Address(*address))
+        else:
+            address_book.add_address(WorkAddress(*address))
 
     @staticmethod
     def remove_address(address_book):
         address_to_remove = View.remove_address(address_book)
-        address_book.remove_address(address_to_remove)
+        if address_to_remove:
+            address_book.remove_address(address_to_remove)
 
     @staticmethod
     def search_address(address_book):
-        pass
+        phrase = View.search_address()
+        View.display_addresses(address_book.find(phrase))
 
     @staticmethod
     def save_book(address_book):
-        pass
+        address_book.save_to_csv()

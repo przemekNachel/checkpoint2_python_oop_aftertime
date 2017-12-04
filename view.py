@@ -54,16 +54,17 @@ class View:
     @staticmethod
     def remove_address(address_book):
         addresses = address_book.addresses
-        while True:
-            View.clear_terminal()
-            i = 1
-            for address in addresses:
-                print(str(i) + ". " + str(address))
-                i += 1
-            index = input("\nType index of address to remove: ")
-            if index.isdigit():
-                if int(index) > 0 and int(index) <= len(addresses):
-                    return addresses[int(index) - 1]
+        if addresses:
+            while True:
+                View.clear_terminal()
+                i = 1
+                for address in addresses:
+                    print(str(i) + ". " + str(address))
+                    i += 1
+                index = input("\nType index of address to remove: ")
+                if index.isdigit():
+                    if int(index) > 0 and int(index) <= len(addresses):
+                        return addresses[int(index) - 1]
 
     @classmethod
     def add_address(cls):
@@ -98,4 +99,9 @@ class View:
         allowed_chars = ["/"]
         digits_string = ''.join([i for i in data if i.isdigit() or i in allowed_chars])
         return digits_string
+
+    @staticmethod
+    def search_address():
+        View.clear_terminal()
+        return input("Type what you want to search: ")
 

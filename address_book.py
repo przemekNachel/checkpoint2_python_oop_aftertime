@@ -15,6 +15,7 @@ class AddressBook:
             raise TypeError
 
     def find(self, search_phrase):
+        self.sort()
         matching_addresses = []
         for address in self.addresses:
             address_attributes = [address.person, address.city, address.street, address.house_no]
@@ -62,8 +63,4 @@ class AddressBook:
     def remove_address(self, address):
         self.addresses.remove(address)
 
-    def add_address(self, address):
-        if len(address) == 4:
-            self.addresses.append(Address(*address))
-        else:
-            self.addresses.append(WorkAddress(*address))
+    
