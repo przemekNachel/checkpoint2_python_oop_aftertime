@@ -48,6 +48,7 @@ class Controller:
 
     @staticmethod
     def display_addresses(address_book):
+        address_book.sort()
         View.display_addresses(address_book.addresses)
 
     @staticmethod
@@ -60,6 +61,7 @@ class Controller:
 
     @staticmethod
     def remove_address(address_book):
+        address_book.sort()
         address_to_remove = View.remove_address(address_book)
         if address_to_remove:
             address_book.remove_address(address_to_remove)

@@ -11,13 +11,13 @@ class View:
     @staticmethod
     def display_main_menu():
         View.clear_terminal()
-        print("1. Create new address book\n2. Open address book from file\n0. Exit\n")
+        print("1. Create new address book\n2. Open address book from file\n\n0. Exit\n")
 
     @staticmethod
     def display_address_book_menu():
         View.clear_terminal()
         print("1. List addresses\n2. Add a new address\n3. Remove an address\n4. Search for an address")
-        print("5. Save this address book\n0. Back to main menu\n")
+        print("5. Save this address book\n\n0. Back to main menu\n")
 
     @staticmethod
     def get_menu_choice():
